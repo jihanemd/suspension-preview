@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ØªÙ… ØªØ¹Ù„ÙŠÙ‚ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ â€” ECC</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #143a66;
+      --ink: #0a1628;
+      --orange: #c55a27;
+      --bg: #f6f8fb;
+      --white: #ffffff;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .glow {
+      pointer-events: none;
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 28rem;
+      background: radial-gradient(
+        ellipse 80% 60% at 50% -20%,
+        rgba(20, 58, 102, 0.1),
+        transparent 70%
+      );
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: 640px) {
+      .wrap {
+        padding: 3.5rem 1.5rem;
+      }
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      height: 7rem;
+      width: auto;
+      object-fit: contain;
+    }
+
+    @media (min-width: 640px) {
+      .logo {
+        height: 8rem;
+      }
+    }
+
+    .header-info {
+      margin-top: 1.25rem;
+      max-width: 28rem;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: var(--orange);
+    }
+
+    .tagline {
+      margin-top: 0.625rem;
+      font-size: 0.875rem;
+      font-weight: 800;
+      line-height: 1.35;
+      color: var(--navy);
+    }
+
+    @media (min-width: 640px) {
+      .tagline {
+        font-size: 1rem;
+      }
+    }
+
+    .header-lead {
+      margin-top: 0.625rem;
+      font-size: 0.75rem;
+      line-height: 1.7;
+      color: rgba(10, 22, 40, 0.6);
+    }
+
+    @media (min-width: 640px) {
+      .header-lead {
+        font-size: 0.8125rem;
+      }
+    }
+
+    .divider {
+      margin-top: 1.5rem;
+      height: 1px;
+      width: 4rem;
+      background: rgba(20, 58, 102, 0.2);
+    }
+
+    /* Cards */
+    .card {
+      margin-top: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(20, 58, 102, 0.08);
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      box-shadow: 0 12px 40px rgba(10, 22, 40, 0.06);
+    }
+
+    .card + .card {
+      margin-top: 1.5rem;
+      box-shadow: 0 12px 40px rgba(10, 22, 40, 0.05);
+    }
+
+    @media (min-width: 640px) {
+      .card {
+        padding: 2.5rem 2.25rem;
+      }
+    }
+
+    .card-label {
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+    }
+
+    .title {
+      margin-top: 0.75rem;
+      text-align: center;
+      font-size: 1.875rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+
+    @media (min-width: 640px) {
+      .title {
+        font-size: 2.35rem;
+      }
+    }
+
+    .intro {
+      margin: 1rem auto 0;
+      max-width: 28rem;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(10, 22, 40, 0.68);
+    }
+
+    @media (min-width: 640px) {
+      .intro {
+        font-size: 1rem;
+      }
+    }
+
+    .intro strong {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .rule {
+      margin: 2rem auto;
+      height: 1px;
+      width: 100%;
+      max-width: 24rem;
+      background: linear-gradient(
+        to left,
+        transparent,
+        rgba(20, 58, 102, 0.15),
+        transparent
+      );
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .reasons {
+      list-style: none;
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .reasons li {
+      display: flex;
+      gap: 0.75rem;
+      text-align: start;
+    }
+
+    .num {
+      margin-top: 0.125rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      background: rgba(20, 58, 102, 0.08);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .reasons p {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: rgba(10, 22, 40, 0.68);
+    }
+
+    @media (min-width: 640px) {
+      .reasons p {
+        font-size: 0.9375rem;
+      }
+    }
+
+    /* Company */
+    .company-name {
+      margin-top: 0.75rem;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .company-sub {
+      margin-top: 0.25rem;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(20, 58, 102, 0.5);
+    }
+
+    .company-founder {
+      margin-top: 0.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      line-height: 1.7;
+      color: rgba(10, 22, 40, 0.55);
+    }
+
+    @media (min-width: 640px) {
+      .company-founder {
+        font-size: 0.8125rem;
+      }
+    }
+
+    .about {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: rgba(10, 22, 40, 0.68);
+    }
+
+    @media (min-width: 640px) {
+      .about {
+        font-size: 0.9375rem;
+      }
+    }
+
+    .about strong {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .contact {
+      margin-top: 2rem;
+      border-top: 1px solid rgba(20, 58, 102, 0.08);
+      padding-top: 1.5rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      direction: ltr;
+    }
+
+    @media (min-width: 640px) {
+      .contact-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.75rem;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #0f2d52;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(20, 58, 102, 0.15);
+      background: var(--bg);
+      color: var(--navy);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(197, 90, 39, 0.4);
+      color: var(--orange);
+    }
+
+    .btn-secondary svg {
+      color: var(--orange);
+    }
+
+    .qr {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .qr img {
+      width: 5.25rem;
+      height: 5.25rem;
+      border-radius: 0.75rem;
+      background: var(--white);
+      object-fit: contain;
+      padding: 0.375rem;
+      box-shadow: 0 0 0 1px rgba(20, 58, 102, 0.1);
+    }
+
+    .qr figcaption {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(10, 22, 40, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <header class="header">
+        <img
+          class="logo"
+          src="assets/expertise-consulting.jpg"
+          alt="Expertise & Consulting Company"
+        />
+
+        <div class="header-info">
+          <p class="eyebrow">EXPERTISE & CONSULTING COMPANY</p>
+          <p class="tagline">Ø­Ù„ÙˆÙ„ Ø±Ù‚Ù…ÙŠØ© Ù…Ø¨ØªÙƒØ±Ø© Â· Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ Â· Ø§Ø³ØªØ´Ø§Ø±Ø§Øª ØªÙ‚Ù†ÙŠØ©</p>
+          <p class="header-lead">
+            ØªØ­Øª Ø¥Ø´Ø±Ø§Ù Ø§Ù„Ø¨Ø±ÙˆÙÙŠØ³ÙˆØ± Ù…ØµØ·ÙÙ‰ Ø§Ù„Ø²ÙŠØ§Ù†ÙŠ â€” Ø®Ø¨ÙŠØ± ÙÙŠ Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ÙˆØªØ·ÙˆÙŠØ±
+            Ø§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø§Ù„Ø°ÙƒÙŠØ©.
+          </p>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+      </header>
+
+      <section class="card">
+        <p class="card-label">Ø¥Ø´Ø¹Ø§Ø± Ø±Ø³Ù…ÙŠ</p>
+        <h1 class="title">ØªÙ… ØªØ¹Ù„ÙŠÙ‚ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚</h1>
+        <p class="intro">
+          Ù†ÙˆØ¯Ù‘ Ø¥Ø¹Ù„Ø§Ù…ÙƒÙ… Ø¨Ø£Ù† Ø®Ø¯Ù…Ø© Ø§Ù„Ù…Ø­Ø§Ø¯Ø«Ø© Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ø£ØµØ¨Ø­Øª Ù…Ø¹Ù„Ù‘Ù‚Ø© Ø­Ø§Ù„ÙŠØ§Ù‹ØŒ ÙˆØ°Ù„Ùƒ Ø¨Ù…Ù†Ø§Ø³Ø¨Ø©
+          <strong>Ø§Ù†ØªÙ‡Ø§Ø¡ Ø§Ù„Ø­Ù…Ù„Ø© Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠØ©</strong>.
+        </p>
+
+        <div class="rule" aria-hidden="true"></div>
+
+        <h2 class="subtitle">Ù„Ù…Ø§Ø°Ø§ ØªÙ… Ø§Ù„ØªØ¹Ù„ÙŠÙ‚ØŸ</h2>
+        <ol class="reasons">
+          <li>
+            <span class="num">1</span>
+            <p>
+              Ø¨Ø¹Ø¯ Ø§Ø®ØªØªØ§Ù… Ø§Ù„Ø­Ù…Ù„Ø© Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠØ©ØŒ ÙŠÙÙˆÙ‚Ù Ù‡Ø°Ø§ Ø§Ù„ÙØ¶Ø§Ø¡ Ø§Ù„Ø±Ù‚Ù…ÙŠ Ø§Ù„ØªÙØ§Ø¹Ù„ÙŠ Ø§Ø­ØªØ±Ø§Ù…Ø§Ù‹
+              Ù„Ù„Ø¬Ø¯ÙˆÙ„ Ø§Ù„Ø²Ù…Ù†ÙŠ Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠ ÙˆÙ„Ù„Ù‚ÙˆØ§Ø¹Ø¯ Ø§Ù„Ù…Ø¹Ù…ÙˆÙ„ Ø¨Ù‡Ø§.
+            </p>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <p>
+              Ù„Ù… ÙŠØ¹Ø¯ Ø¨Ø¥Ù…ÙƒØ§Ù† Ø§Ù„Ø²ÙˆØ§Ø± Ø·Ø±Ø­ Ø£Ø³Ø¦Ù„Ø© Ø¬Ø¯ÙŠØ¯Ø© Ø£Ùˆ Ù…ØªØ§Ø¨Ø¹Ø© Ø§Ù„Ø­ÙˆØ§Ø± Ø¹Ø¨Ø± Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ ÙÙŠ
+              Ù‡Ø°Ù‡ Ø§Ù„Ù…Ø±Ø­Ù„Ø©.
+            </p>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <p>
+              Ù†Ø´ÙƒØ±ÙƒÙ… Ø¹Ù„Ù‰ Ø§Ù‡ØªÙ…Ø§Ù…ÙƒÙ… ÙˆÙ…Ø´Ø§Ø±ÙƒØªÙƒÙ… Ø®Ù„Ø§Ù„ ÙØªØ±Ø© Ø§Ù„Ø­ÙˆØ§Ø± Ø­ÙˆÙ„ Ø§Ù„Ø£Ø±Ø¶ÙŠØ© Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠØ©.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <p class="card-label" style="letter-spacing: 0.16em">Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø´Ø±ÙƒØ© Â· Ù„Ù„ØªÙˆØ§ØµÙ„</p>
+
+        <p class="company-name">Expertise & Consulting Company</p>
+        <p class="company-sub">ECC Â· Ø­Ù„ÙˆÙ„ Ø±Ù‚Ù…ÙŠØ© ÙˆØ°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ</p>
+        <p class="company-founder">
+          ØªØ­Øª Ø¥Ø´Ø±Ø§Ù Ø§Ù„Ø¨Ø±ÙˆÙÙŠØ³ÙˆØ± Ù…ØµØ·ÙÙ‰ Ø§Ù„Ø²ÙŠØ§Ù†ÙŠ (Mostafa Ezziyyani)
+        </p>
+
+        <div class="about">
+          <p>
+            ØªÙ… ØªØ·ÙˆÙŠØ± Ù‡Ø°Ø§ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø¨Ø§Ø¹ØªØ¨Ø§Ø±Ù‡ Ù†Ø³Ø®Ø© Ø±Ù‚Ù…ÙŠØ© Ø°ÙƒÙŠØ© Ù„Ù„Ø­Ù…Ù„Ø© Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠØ© Ù„Ø³Ù†Ø©
+            2026ØŒ Ø¨Ù‡Ø¯Ù ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„Ø¨Ø±Ù†Ø§Ù…Ø¬ Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠ ÙˆÙ…Ø¶Ø§Ù…ÙŠÙ†Ù‡ Ù„Ù„Ù…ÙˆØ§Ø·Ù†ÙŠÙ† Ø¨Ø·Ø±ÙŠÙ‚Ø© Ø±Ù‚Ù…ÙŠØ©
+            ØªÙØ§Ø¹Ù„ÙŠØ© ÙˆÙ…Ø¨ØªÙƒØ±Ø©.
+          </p>
+          <p>
+            ÙˆÙ‚Ø¯ Ø£ÙÙ†Ø¬Ø² Ù…Ù† Ø·Ø±Ù Ø´Ø±ÙƒØ©
+            <strong>Expertise & Consulting Company (ECC)</strong>ØŒ ØªØ­Øª Ø§Ù„Ø¥Ø´Ø±Ø§Ù
+            Ø§Ù„Ø¹Ù„Ù…ÙŠ ÙˆØ§Ù„ØªÙ‚Ù†ÙŠ Ù„Ù„Ø£Ø³ØªØ§Ø° Ø§Ù„Ù…Ø¤Ø³Ø³ Ø§Ù„Ø¨Ø±ÙˆÙÙŠØ³ÙˆØ± Ù…ØµØ·ÙÙ‰ Ø§Ù„Ø²ÙŠØ§Ù†ÙŠØŒ Ø§Ù„Ø®Ø¨ÙŠØ± ÙÙŠ
+            Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ÙˆØªØ·ÙˆÙŠØ± Ø§Ù„Ø­Ù„ÙˆÙ„ ÙˆØ§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø§Ù„Ø°ÙƒÙŠØ©.
+          </p>
+          <p>
+            ÙŠØ¹ØªÙ…Ø¯ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø¹Ù„Ù‰ ØªÙ‚Ù†ÙŠØ§Øª <strong>Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ</strong> ÙˆØ§Ù„ØªÙØ§Ø¹Ù„
+            Ø§Ù„Ø±Ù‚Ù…ÙŠ Ù„ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„Ø¨Ø±Ù†Ø§Ù…Ø¬ Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠØŒ Ø´Ø±Ø­ Ù…Ø­Ø§ÙˆØ±Ù‡ØŒ ÙˆØ§Ù„Ø¥Ø¬Ø§Ø¨Ø© Ø¹Ù† Ø§Ø³ØªÙØ³Ø§Ø±Ø§Øª
+            Ø§Ù„Ù…ÙˆØ§Ø·Ù†ÙŠÙ† Ø¨Ø·Ø±ÙŠÙ‚Ø© Ù…Ø¨Ø³Ø·Ø© ÙˆØªÙØ§Ø¹Ù„ÙŠØ©.
+          </p>
+          <p>
+            ÙˆÙŠÙ‡Ø¯Ù Ù‡Ø°Ø§ Ø§Ù„Ø­Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø§Ù†ØªÙ‚Ø§Ù„ Ù…Ù† Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠ Ù„Ù„Ø¨Ø±Ù†Ø§Ù…Ø¬ Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠ Ø¥Ù„Ù‰
+            Ù†Ù…ÙˆØ°Ø¬ Ø­Ø¯ÙŠØ« ÙŠÙ‚ÙˆÙ… Ø¹Ù„Ù‰ Ø§Ù„ØªÙˆØ§ØµÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠØŒ Ø§Ù„ØªÙØ§Ø¹Ù„ØŒ Ø§Ù„Ø´ÙØ§ÙÙŠØ©ØŒ ÙˆØªÙŠØ³ÙŠØ± ÙˆØµÙˆÙ„
+            Ø§Ù„Ù…ÙˆØ§Ø·Ù† Ø¥Ù„Ù‰ Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø© Ø§Ù„Ø§Ù†ØªØ®Ø§Ø¨ÙŠØ©.
+          </p>
+        </div>
+
+        <div class="contact">
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:ezziyyani@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              ezziyyani@gmail.com
+            </a>
+            <a class="btn btn-secondary" href="tel:+212661630301">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              +212 661-630301
+            </a>
+          </div>
+
+          <figure class="qr">
+            <img
+              src="assets/QR_LinkedIn_Mostafa_Ezziyyani.png"
+              alt="LinkedIn â€” Ù…ØµØ·ÙÙ‰ Ø§Ù„Ø²ÙŠØ§Ù†ÙŠ"
+            />
+            <figcaption>LinkedIn â€” Ù…ØµØ·ÙÙ‰ Ø§Ù„Ø²ÙŠØ§Ù†ÙŠ</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
+
